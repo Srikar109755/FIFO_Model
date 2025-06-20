@@ -29,7 +29,7 @@ This project implements a synchronous FIFO design with:
 
 ## 📊 Block Diagram
 
-![FIFO Block Diagram](FIFO_Block_Diagram.png)
+![FIFO Block Diagram](https://raw.githubusercontent.com/Srikar109755/FIFO_Model/main/FIFO/images/FIFO_Block_Diagram.png)
 
 ---
 
