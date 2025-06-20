@@ -26,7 +26,7 @@ This project implements a synchronous FIFO design with:
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 
 ---
