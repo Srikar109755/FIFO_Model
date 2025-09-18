@@ -1,43 +1,47 @@
-# 🚀 FIFO Model in Verilog
-
-This repository contains a complete Verilog implementation of a **synthesizable FIFO (First-In-First-Out) Model**, with robust functionality and verification. It supports parameterized depth and width, and includes useful status flags to monitor FIFO state.
+Perfect — here’s a **clean, professional version** of your FIFO README without emojis, while keeping it structured and polished:
 
 ---
 
-## 📁 Table of Contents
+# FIFO Model in Verilog
+
+This repository contains a complete Verilog implementation of a **synthesizable FIFO (First-In-First-Out) Model**, supporting parameterized data width and depth, robust status flags, and a comprehensive testbench for verification.
+
+---
+
+## Table of Contents
 
 * [Overview](#overview)
-* [Block Diagram](#-block-diagram)
-* [I/O Port Descriptions](#-io-port-descriptions)
-* [Features](#-features)
-* [Modules](#-modules)
-* [Testbench Description](#-testbench-description)
-* [Simulation](#-simulation)
+* [Block Diagram](#block-diagram)
+* [I/O Port Descriptions](#io-port-descriptions)
+* [Features](#features)
+* [Modules](#modules)
+* [Testbench Description](#testbench-description)
+* [Simulation](#simulation)
 
 ---
 
 ## Overview
 
-This project implements a synchronous FIFO design with:
+This project implements a **synchronous FIFO buffer** with configurable parameters:
 
-* Parameterized width and depth
-* Separate memory block module for data storage
-* Comprehensive testbench covering full functionality
-* Multiple status flags indicating real-time FIFO conditions
+* Parameterized **data width** (`FWIDTH`) and **depth** (`FDEPTH`)
+* Separate **memory block** module for data storage
+* Comprehensive **testbench** validating all edge cases
+* Real-time **status flags** to monitor FIFO condition
 
 ---
 
-## 📊 Block Diagram
+## Block Diagram
 
 ![FIFO Block Diagram](https://raw.githubusercontent.com/Srikar109755/FIFO_Model/main/FIFO/images/FIFO_Block_Diagram.png)
 
 ---
 
-## 🔌 I/O Port Descriptions
+## I/O Port Descriptions
 
-All signals ending in `N` are **active low**.
+**Note:** All signals ending in `N` are **active low**.
 
-### 🔀 Input Ports:
+### Input Ports
 
 | Port Name | Description               |
 | --------- | ------------------------- |
@@ -48,7 +52,7 @@ All signals ending in `N` are **active low**.
 | `FClrN`   | Clear FIFO                |
 | `FOutN`   | Read-enable signal        |
 
-### 🛄 Output Ports:
+### Output Ports
 
 | Port Name  | Description                         |
 | ---------- | ----------------------------------- |
@@ -61,71 +65,74 @@ All signals ending in `N` are **active low**.
 
 ---
 
-## ✅ Features
+## Features
 
-* **Parameterization:** Configurable FIFO width and depth via macros (`FWIDTH`, `FDEPTH`)
-* **Synchronous Design:** Write and read are synchronized to the clock
-* **Modular Architecture:** Dedicated memory module for data storage
+* **Parameterization:** Configurable FIFO width & depth using macros (`FWIDTH`, `FDEPTH`)
+
+* **Synchronous Design:** Both write and read synchronized to the clock
+
+* **Modular Architecture:** Dedicated memory block for clean design separation
+
 * **Status Flags:**
 
-  * `F_EmptyN`: FIFO is empty
-  * `F_FullN`: FIFO is full
-  * `F_FirstN`: One element left
-  * `F_LastN`: One space left
-  * `F_SLastN`: Two spaces left
-* **Robust Testbench:** Covers all operational and boundary conditions
+  * `F_EmptyN` → FIFO is empty
+  * `F_FullN` → FIFO is full
+  * `F_FirstN` → Only one element left
+  * `F_LastN` → One space left
+  * `F_SLastN` → Two spaces left
+
+* **Robust Testbench:** Tests all operational and boundary conditions
 
 ---
 
-## 📁 Modules
+## Modules
 
 ### 1. `FIFO_Model.v`
 
-* Controls FIFO behavior
-* Manages read/write pointers and counter
+* Controls FIFO logic (read/write pointers, counter)
 * Generates status signals
 
 ### 2. `FIFO_MEM_BLK.v`
 
 * Implements synchronous memory storage
-* Controlled writes and asynchronous reads
+* Controlled writes, asynchronous reads
 
 ### 3. `FIFO_Model_tb.v`
 
-* Testbench for simulation
-* Generates stimuli, monitors flags and verifies data flow
+* Comprehensive testbench
+* Stimuli generation and flag verification
 
 ---
 
-## 🧪 Testbench Description
+## Testbench Description
 
-The testbench validates FIFO operation through various tests:
+The testbench verifies FIFO functionality through:
 
 * Clock generation and reset sequencing
-* Continuous writes to fill the FIFO
-* Check for full and overflow conditions
-* Reads to empty the FIFO
-* Check for empty and underflow conditions
+* Continuous writes until FIFO is full
+* Validation of full and overflow conditions
+* Continuous reads until FIFO is empty
+* Validation of empty and underflow conditions
 * Status flag checks:
 
-  * When FIFO has only one element (`F_FirstN`)
-  * When two slots remain (`F_SLastN`)
-  * When one slot remains (`F_LastN`)
+  * `F_FirstN` → One element left
+  * `F_SLastN` → Two spaces left
+  * `F_LastN` → One space left
 
-Verbose simulation output is generated via `$display`.
+Verbose output is generated using `$display` for debugging.
 
 ---
 
-## ▶️ Simulation
+## Simulation
 
-You can simulate the design with any Verilog simulator such as:
+This design can be simulated with:
 
-* **ModelSim**
-* **Vivado XSIM**
-* **Verilator**
-* **VCS**
+* ModelSim
+* Vivado XSIM
+* Verilator
+* Synopsys VCS
 
-### Example Commands (ModelSim):
+### Example (ModelSim):
 
 ```bash
 # Compile all source files
@@ -133,3 +140,6 @@ vlog FIFO_MEM_BLK.v FIFO_Model.v FIFO_Model_tb.v
 
 # Simulate
 vsim FIFO_Model_tb
+```
+
+---
